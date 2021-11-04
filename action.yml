@@ -12,8 +12,7 @@ inputs:
   token:  # github token
     description: 'Github token for deployment.'
     required: true
-  username:
-    description: '
+
 runs:
   using: "composite"
   steps:
