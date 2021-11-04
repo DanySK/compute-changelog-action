@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+      - *
+
+jobs:
+  update-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: DanySK/compute-changelog-action@master
+    with:
+      token: ${{ github.token }}
