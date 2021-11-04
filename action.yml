@@ -1,0 +1,38 @@
+name: 'Update Changelog'
+description: 'Creates / updates the changelog automatically via cookpete/auto-changelog.'
+inputs:
+  message:
+    description: 'Commit message'
+    required: false
+    default: 'Update Changelog'
+  options:
+    description: 'Options passed to auto-changelog'
+    required: false
+    default: '--unreleased --commit-limit 20'
+  token:  # github token
+    description: 'Github token for deployment.'
+    required: true
+  username:
+    description: '
+runs:
+  using: "composite"
+  steps:
+    - name: Install auto-changelog
+      shell: bash
+      run: npm install -g auto-changelog
+    - name: Checkout
+      uses: danysk/action-checkout@0.1.0
+    - name: Compute Changelog
+      shell: bash
+      run: auto-changelog ${{ inputs.options }}
+    - name: Add changes
+      shell: bash
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+        git commit -m '${{ inputs.message }}' -a
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
