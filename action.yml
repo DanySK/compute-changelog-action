@@ -25,12 +25,13 @@ runs:
     - name: Compute Changelog
       shell: bash
       run: auto-changelog ${{ inputs.options }}
-    - name: Add changes
+    - name: Commit changes
       shell: bash
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
-        git commit -m '${{ inputs.message }}' -a
+        git add .
+        git commit -m '${{ inputs.message }}'
     - name: Push changes
       uses: ad-m/github-push-action@v0.6.0
       with:
