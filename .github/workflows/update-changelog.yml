@@ -7,6 +7,6 @@ jobs:
   update-changelog:
     runs-on: ubuntu-latest
     steps:
-      - uses: DanySK/compute-changelog-action@master
+      - uses: DanySK/compute-changelog-action@${{ github.sha }}
         with:
           token: ${{ github.token }}
