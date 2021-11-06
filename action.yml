@@ -8,7 +8,7 @@ inputs:
   options:
     description: 'Options passed to auto-changelog'
     required: false
-    default: "--backfill-limit false --breaking-pattern '!:' --ignore-commit-pattern '^(chore|build|ci|style)(\\([\\w\\d]+\\))?:' --commit-limit false --sort-commits subject --unreleased"
+    default: "--backfill-limit false --breaking-pattern '!:' --ignore-commit-pattern '^(chore|build|ci|style).*:' --commit-limit false --sort-commits subject --unreleased"
   token:  # github token
     description: 'Github token for deployment.'
     required: true
