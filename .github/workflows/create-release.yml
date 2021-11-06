@@ -1,3 +1,5 @@
+name: Automatically bump patch version
+
 on:
   push:
     branches:
