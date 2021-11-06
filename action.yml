@@ -23,7 +23,12 @@ runs:
       uses: danysk/action-checkout@0.1.0
     - name: Compute Changelog
       shell: bash
-      run: auto-changelog ${{ inputs.options }}
+      run: |
+        if [[ -f .auto-changelog ]]; then
+          auto-changelog
+        else
+          auto-changelog ${{ inputs.options }}
+        fi
     - name: Commit changes
       shell: bash
       run: |
