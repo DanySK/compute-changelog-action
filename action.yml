@@ -34,8 +34,8 @@ runs:
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
-        git add .
-        git commit -m '${{ inputs.message }}'
+        locate -i changelog | xargs -n1 git add ;
+        git commit -a -m '${{ inputs.message }}'
     - name: Push changes
       uses: ad-m/github-push-action@v0.6.0
       with:
