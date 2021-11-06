@@ -9,6 +9,10 @@ inputs:
     description: 'Options passed to auto-changelog'
     required: false
     default: "--backfill-limit false --breaking-pattern '!:' --ignore-commit-pattern '^(chore|build|ci|style).*:' --commit-limit false --sort-commits subject --unreleased"
+  push-changes:
+    description: 'True if the changelog should be pushed'
+    required: false
+    default: true
   token:  # github token
     description: 'Github token for deployment.'
     required: true
@@ -37,6 +41,7 @@ runs:
         find . -type f -iname "*changelog*" -print | tr '\n' '\0' | xargs -0 -n1 git add ;
         git commit -a -m '${{ inputs.message }}'
     - name: Push changes
+      if: inputs.push-changes
       uses: ad-m/github-push-action@v0.6.0
       with:
         github_token: ${{ inputs.token }}
