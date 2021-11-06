@@ -1,3 +1,5 @@
+name: Update changelog
+
 on:
   push:
     branches:
