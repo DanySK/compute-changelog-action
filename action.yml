@@ -24,7 +24,7 @@ runs:
       shell: bash
       run: npm install -g auto-changelog
     - name: Checkout
-      uses: danysk/action-checkout@0.2.25
+      uses: danysk/action-checkout@0.2.26
     - name: Compute Changelog
       shell: bash
       run: |
