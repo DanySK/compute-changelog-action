@@ -7,6 +7,6 @@ on:
 
 jobs:
   Autobump:
-    uses: DanySK/workflows/.github/workflows/compute-version-and-create-release.yml@1.0.140
+    uses: DanySK/workflows/.github/workflows/compute-version-and-create-release.yml@1.0.142
     with:
       update-version: patch
